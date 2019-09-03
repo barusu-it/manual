@@ -13,6 +13,11 @@ make
 sudo cp wrk /usr/local/bin
 ```
 
+### Question: Makefile:64: recipe for target 'obj/bytecode.o' failed
+
+https://github.com/wg/wrk/issues/362
+
+use sudo make
 
 ### reference
 
