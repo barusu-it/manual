@@ -19,6 +19,10 @@ https://github.com/wg/wrk/issues/362
 
 use sudo make
 
+### 连接未释放问题
+
+https://github.com/wg/wrk/issues/336
+
 ### reference
 
 https://github.com/wg/wrk/wiki
