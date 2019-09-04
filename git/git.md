@@ -11,3 +11,9 @@ git checkout <tag_name>
 git checkout -b <new_branch_name> <tag_name>
 
 ```
+
+### clone special branch
+
+```shell script
+git clone -b <branch_name> <git_url>
+```
