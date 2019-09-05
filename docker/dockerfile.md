@@ -293,6 +293,45 @@ HEALTHCHECK --interval=5s --timeout=3s \
 
 ONBUILD 是一个特殊的指令，它后面跟的是其它指令，比如 RUN, COPY 等，而这些指令，在当前镜像构建时并不会被执行。只有当以当前镜像为基础镜像，去构建下一级镜像的时候才会被执行。
 
+#### 多段构建
+
+示例：
+
+```
+FROM golang:1.9-alpine as builder
+# 这里用as来起别名
+
+RUN apk --no-cache add git
+
+WORKDIR /go/src/github.com/go/helloworld/
+
+RUN go get -d -v github.com/go-sql-driver/mysql
+
+COPY app.go .
+
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o app .
+
+# 第二阶段
+FROM alpine:latest as prod
+
+RUN apk --no-cache add ca-certificates
+
+WORKDIR /root/
+
+COPY --from=0 /go/src/github.com/go/helloworld/app .
+# 此处 --from=0 指的是从上一个阶段，也可以写作 --from=builder ,builder 就是前面起的别名
+
+CMD ["./app"]
+
+```
+
+例如当我们只想构建 builder 阶段的镜像时，增加 --target=builder 参数即可
+
+```
+docker build --target builder -t username/imagename:tag .
+```
+
+
 #### reference
 
 https://docs.docker.com/engine/reference/builder/
