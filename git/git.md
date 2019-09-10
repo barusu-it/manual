@@ -23,3 +23,7 @@ git clone -b <branch_name> <git_url>
 ```shell script
 git branch -r
 ```
+
+### error: cannot stat ‘file’: Permission denied
+
+一般情况是编辑器、浏览器或资源管理器等应用占用导致，关闭相关应用即可，必要时重启一下
