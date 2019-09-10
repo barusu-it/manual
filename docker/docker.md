@@ -104,7 +104,7 @@ IMAGE ID            REPOSITORY          TAG
 fe9198c04d62        mongo               3.2
 00285df0df87        <none>              <none>
 
-docker imsage ls --digest
+docker image ls --digest
 # 显示摘要sha256
 
 ```
@@ -158,6 +158,75 @@ docker system df -v
 
 1. 该container的devicemapper磁盘空间满，导致dubbo registry file 无法更新
 2. 该container的inode满，导致无法更新
+
+### docker import
+
+格式：docker import [选项] <文件>|<URL>|- [<仓库名>[:<标签>]]
+
+压缩包可以是本地文件、远程 Web 文件，甚至是从标准输入中得到。压缩包将会在镜像 / 目录展开，并直接作为镜像第一层提交。
+
+```shell script
+docker import \
+    http://download.openvz.org/template/precreated/ubuntu-16.04-x86_64.tar.gz \
+    openvz/ubuntu:16.04
+
+Downloading from http://download.openvz.org/template/precreated/ubuntu-16.04-x86_64.tar.gz
+sha256:412b8fc3e3f786dca0197834a698932b9c51b69bd8cf49e100c35d38c9879213
+```
+
+### docker history
+
+查看镜像历史
+
+```shell script
+docker history openvz/ubuntu:16.04
+IMAGE               CREATED              CREATED BY          SIZE                COMMENT
+f477a6e18e98        About a minute ago                       214.9 MB            Imported from http://download.openvz.org/template/precreated/ubuntu-16.04-x86_64.tar.gz
+``` 
+
+### docker save & docker load
+
+保存镜像到文件 & 加载镜像
+
+该方法不推荐，建议使用dockerHub或私有registry
+
+保存镜像
+
+```shell script
+docker save alpine -o filename
+file filename
+
+filename: POSIX tar archive
+
+# gzip
+docker save alpine | gzip > alpine-latest.tar.gz
+```
+
+加载镜像
+
+```shell script
+docker load -i alpine-latest.tar.gz
+Loaded image: alpine:latest
+```
+
+如果我们结合这两个命令以及 ssh 甚至 pv 的话，利用 Linux 强大的管道，我们可以写一个命令完成从一个机器将镜像迁移到另一个机器，并且带进度条的功能：
+
+```shell script
+docker save <image_name> | bzip2 | pv | ssh <username>@<hostname> 'cat | docker load'
+```
+
+### docker run
+
+```shell script
+docker run -it <container_name_or_id> /bin/bash
+```
+
+启动已终止的镜像
+
+Usage
+
+docker container start [OPTIONS] CONTAINER [CONTAINER...]
+
 
 
 ### reference
