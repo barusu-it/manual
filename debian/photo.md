@@ -1,0 +1,2 @@
+
+适用于Linux的最佳Photoshop替代品 GIMP，Krita，Darktable，digiKam
