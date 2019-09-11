@@ -8,7 +8,7 @@
 4. getopts 不会重排所有参数的顺序，getopt 会重排参数顺序（这里的区别下面会说明）
 5. getopts 出现的目的是为了代替 getopt 较快捷的执行参数分析工作
 
-### getopts sample
+### getopts example
 
 ```shell script
 #!/bin/bash
@@ -30,6 +30,48 @@ while getopts 'd:Dm:f:t:' OPT; do
 done
   
 shift $(($OPTIND - 1))
+```
+
+### getopt example
+
+
+```shell script
+#!/bin/bash
+ 
+ARGS=`getopt -o "ao:" -l "arg,option:" -n "getopt.sh" -- "$@"`
+ 
+eval set -- "${ARGS}"
+ 
+while true; do
+    case "${1}" in
+        -a|--arg)
+        shift;
+        echo -e "arg: specified"
+        ;;
+        -o|--option)
+        shift;
+        if [[ -n "${1}" ]]; then
+            echo -e "option: specified, value is ${1}"
+            shift;
+        fi
+        ;;
+        --)
+        shift;
+        break;
+        ;;
+    esac
+done
+```
+
+```shell script
+# ./getopt.sh -a
+arg: specified
+# ./getopt.sh -a -o Apple
+arg: specified
+option: specified, value is Apple
+# ./getopt.sh --arg --option Apple
+arg: specified
+option: specified, value is Apple
 ```
 
 ### reference
