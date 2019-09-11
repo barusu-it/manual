@@ -15,6 +15,44 @@ docker run -it --rm ubuntu:18.04 bash
 docker run --name webserver -d -p 80:80 nginx
 ```
 
+容器中可以运行一些网络应用，要让外部也可以访问这些应用，可以通过 -P 或 -p 参数来指定端口映射。
+
+当使用 -P 标记时，Docker 会随机映射一个 49000~49900 的端口到内部容器开放的网络端口。
+
+可以使用 udp 标记来指定 udp 端口
+
+```shell script
+docker run -d -p 127.0.0.1:5000:5000/udp training/webapp python app.py
+```
+
+-p 标记可以多次使用来绑定多个端口
+
+```shell script
+docker run -d \
+    -p 5000:5000 \
+    -p 3000:80 \
+    training/webapp \
+    python app.py
+```
+
+-h HOSTNAME 或者 --hostname=HOSTNAME 设定容器的主机名，它会被写到容器内的 /etc/hostname 和 /etc/hosts。但它在容器外部看不到，既不会在 docker container ls 中显示，也不会在其他的容器的 /etc/hosts 看到。
+
+--dns=IP_ADDRESS 添加 DNS 服务器到容器的 /etc/resolv.conf 中，让容器用这个服务器来解析所有不在 /etc/hosts 中的主机名。
+
+--dns-search=DOMAIN 设定容器的搜索域，当设定搜索域为 .example.com 时，在搜索一个名为 host 的主机时，DNS 不仅搜索 host，还会搜索 host.example.com。
+
+### 查看映射端口配置
+
+使用 docker port 来查看当前映射的端口配置，也可以查看到绑定的地址
+
+```shell script
+$ docker port nostalgic_morse 5000
+127.0.0.1:49155.
+```
+
+
+
+
 ### 镜像差异
 
 ```shell script
@@ -221,12 +259,55 @@ docker save <image_name> | bzip2 | pv | ssh <username>@<hostname> 'cat | docker 
 docker run -it <container_name_or_id> /bin/bash
 ```
 
+如需要daemon运行，添加 -d option
+
 启动已终止的镜像
 
 Usage
 
 docker container start [OPTIONS] CONTAINER [CONTAINER...]
 
+### docker container logs
+
+查看容器日志
+
+```shell script
+docker container logs <container_name_or_id>
+```
+
+The docker logs command is an alias of docker container logs . They show the logs of a single container.
+
+### 终止容器
+
+docker stop / docker container stop <container_name_or_id>
+
+### 进入容器
+
+```shell script
+docker exec -it <container> bash
+```
+
+### 导出导入容器
+
+```shell script
+docker export <container> > <tar_file>
+
+cat <tar_file> | docker import - <repository_name>
+# e.g.
+cat ubuntu.tar | docker import - test/ubuntu:v1.0
+
+# from url
+docker import http://example.com/exampleimage.tgz example/imagerepo
+```
+
+### 删除容器
+
+```shell script
+docker container rm <container>
+
+# delete all stopped container
+docker container prune
+```
 
 
 ### reference
