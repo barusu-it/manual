@@ -13,3 +13,7 @@ tasklist | findstr $pid
 # sample of killing task
 taskkill /f /t /im /javaw.exe
 ```
+
+### 参考
+
+https://blog.csdn.net/jiangwei0910410003/article/details/18967441
