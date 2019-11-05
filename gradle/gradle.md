@@ -1,4 +1,10 @@
 
+### show dependencies
+
+```shell script
+gradlew ${module_name}:dependencies
+```
+
 ### get gradle version
 
 ```groovy
