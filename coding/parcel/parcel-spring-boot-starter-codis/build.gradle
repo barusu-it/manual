@@ -1,0 +1,5 @@
+
+dependencies {
+    compile project(":parcel-spring-boot-autoconfigure-codis")
+    compile project(":parcel-spring-boot-data-codis")
+}

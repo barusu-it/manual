@@ -1,0 +1,3 @@
+dependencies {
+    compile project(':parcel-spring-boot-autoconfigure-cache-caffeine-redis')
+}

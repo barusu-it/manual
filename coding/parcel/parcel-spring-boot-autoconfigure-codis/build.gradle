@@ -1,0 +1,11 @@
+dependencies {
+    compile project(":parcel-spring-boot-data-codis")
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+
+    testCompile 'junit:junit'
+
+}

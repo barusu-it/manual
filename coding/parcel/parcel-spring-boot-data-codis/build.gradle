@@ -1,0 +1,15 @@
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+
+    compile 'io.codis.jodis:jodis'
+    compile 'commons-codec:commons-codec'
+
+    compile 'org.springframework.boot:spring-boot-starter-data-redis'
+
+    testCompile 'junit:junit'
+
+}

@@ -1,0 +1,9 @@
+rootProject.name = 'parcel'
+include 'parcel-spring-boot-data-codis'
+include 'parcel-spring-boot-autoconfigure-codis'
+include 'parcel-spring-boot-starter-codis'
+include 'parcel-sample-spring-boot-codis-cache'
+include 'parcel-spring-boot-autoconfigure-cache-caffeine-redis'
+include 'parcel-sample-spring-boot-caffeine-redis-cache'
+include 'parcel-spring-boot-starter-cache-caffeine-redis'
+

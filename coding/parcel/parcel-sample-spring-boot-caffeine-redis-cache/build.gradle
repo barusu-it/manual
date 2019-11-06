@@ -1,0 +1,17 @@
+dependencies {
+    compile project(':parcel-spring-boot-starter-cache-caffeine-redis')
+    compile project(':parcel-spring-boot-starter-codis')
+
+    compile 'com.github.ben-manes.caffeine:caffeine'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-undertow'
+    compile 'org.springframework.boot:spring-boot-starter-cache'
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}

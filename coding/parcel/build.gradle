@@ -1,0 +1,64 @@
+buildscript {
+
+    ext.jodisVersion = '0.4.1'
+    ext.log4jVersion = '1.2.17'
+    ext.springBootVersion = '1.5.22.RELEASE'
+
+    repositories {
+        maven {
+            url 'http://maven.aliyun.com/nexus/content/groups/public'
+        }
+    }
+
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+    }
+}
+
+
+group 'it.barusu'
+version '1.0-SNAPSHOT'
+
+allprojects {
+    version '1.0-SNAPSHOT'
+
+    apply plugin: 'java'
+    apply plugin: 'maven'
+    apply plugin: 'idea'
+    apply plugin: 'eclipse'
+
+    [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+
+    repositories {
+        maven {
+            url 'http://maven.aliyun.com/nexus/content/groups/public'
+        }
+    }
+}
+
+subprojects {
+
+    apply plugin: 'io.spring.dependency-management'
+
+    configurations {
+        all*.exclude module: 'spring-boot-starter-tomcat'
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.boot:spring-boot-starter-parent:${springBootVersion}"
+        }
+
+        dependencies {
+            dependency "io.codis.jodis:jodis:$jodisVersion"
+            dependency "org.projectlombok:lombok:1.18.10"
+            // spring boot 1.5.x
+            // fix 'build.plugins.plugin[io.spring.gradle.dependencymanagement.org.apache.maven.plugins:maven-antrun-plugin].dependencies.dependency.scope' for junit:junit:jar must be one of [compile, runtime, system] but is 'test'. in log4j:log4j:1.2.16
+            dependency "log4j:log4j:$log4jVersion"
+        }
+    }
+
+}
+

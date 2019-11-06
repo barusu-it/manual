@@ -1,0 +1,16 @@
+
+dependencies {
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+
+    compile 'org.springframework.boot:spring-boot-autoconfigure'
+    compile 'org.springframework:spring-context-support'
+    compile 'org.springframework.data:spring-data-redis'
+    compile 'redis.clients:jedis'
+    compile 'com.github.ben-manes.caffeine:caffeine'
+
+    testCompile 'junit:junit'
+}
