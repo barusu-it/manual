@@ -6,3 +6,11 @@ find . -type f -size +200m -exec ls -l {} +;
 find . -type f -size +200m -print0 | xargs -0 du -hb | sort -nr| head -10 
 
 ```
+
+### 排除特定目录
+
+```shell script
+find . -name "$pattern" ! -path "$exclude_path_pattern"
+```
+
+注意 $pattern 和 $exclude_path_pattern 都需要引号引起来
