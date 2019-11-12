@@ -14,3 +14,9 @@ find . -name "$pattern" ! -path "$exclude_path_pattern"
 ```
 
 注意 $pattern 和 $exclude_path_pattern 都需要引号引起来
+
+### 不递归
+
+```shell script
+find . -name "$pattern" -maxdepth 1
+```
