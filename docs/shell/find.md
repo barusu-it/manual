@@ -27,3 +27,9 @@ find . -name "$pattern" -maxdepth 1
 # sample
 find . -type f \( -iname "*.c" -or -iname "*.asm" \)
 ```
+
+### Reference
+
+https://www.cyberciti.biz/faq/find-command-exclude-ignore-files/
+
+https://www.cyberciti.biz/faq/find-command-exclude-ignore-files/
