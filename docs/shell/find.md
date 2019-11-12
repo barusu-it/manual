@@ -20,3 +20,10 @@ find . -name "$pattern" ! -path "$exclude_path_pattern"
 ```shell script
 find . -name "$pattern" -maxdepth 1
 ```
+
+### 多条件
+
+```shell script
+# sample
+find . -type f \( -iname "*.c" -or -iname "*.asm" \)
+```
