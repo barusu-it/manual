@@ -20,3 +20,7 @@ RUN chmod +x /tini
 
 ENTRYPOINT ["/usr/local/bin/tini", "--", "/docker-entrypoint.sh"]
 ```
+
+### reference
+
+https://my.oschina.net/u/2552286/blog/3039592
