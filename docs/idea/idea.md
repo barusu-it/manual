@@ -46,3 +46,7 @@ Menu: File -> Settings -> Editor —> Code Style -> Java, import google style sc
 ### set hard wrap
 
 File -> Settings -> Editor -> Code Style, hard wrap at '120' to '100'
+
+### Warning:(xx, xx) Not annotated parameter overrides @NotNull parameter
+
+add @NotNull annotation to fix it.
