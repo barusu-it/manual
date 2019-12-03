@@ -37,3 +37,9 @@ use -x to skip task
 ```
 gradlew clean build -x test
 ```
+
+### upgrade gradle version
+
+```
+gradlew wrapper --gradle-version=$version
+```
