@@ -1,4 +1,9 @@
 
+### sha checksum
+
+```
+sha512sum $file
+```
 
 ### asc checksum
 
