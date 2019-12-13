@@ -29,3 +29,19 @@ GATEWAY=192.168.7.1 #默认网关
 NETMASK=255.255.255.0 #子网掩码
 DNS1=192.168.7.1 #DNS 配置
 ```
+
+
+### modify hostname
+
+```
+sudo hostname $your_hostanme
+```
+
+and modify /etc/hostname
+
+
+### show gateway ip
+
+```
+ip route show
+```
