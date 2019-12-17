@@ -14,6 +14,7 @@ dubbo> invoke $dubbo_service_name.$method_name($json_request)
 
 
 https://blog.csdn.net/u013960139/article/details/73863480
+http://www.voidcn.com/article/p-zwfsqphu-bgn.html
 
 
 ### protocol config
