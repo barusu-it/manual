@@ -26,6 +26,22 @@ https://www.jianshu.com/p/6f3e3e989959
 https://www.jianshu.com/p/8157866deb86
 https://blog.csdn.net/mafei6827/article/details/80689628
 
+### running with docker
+```
+docker run --name oap --restart always -d -e SW_CLUSTER=zookeeper -e SW_CLUSTER_ZK_HOST_PORT=192.168.56.102:2181 -e SW_STORAGE=elasticsearch -e SW_STORAGE_ES_CLUSTER_NODES=192.168.56.102:9200 -p 12801:12800 -p 11801:11800 apache/skywalking-oap-server
+
+docker run --name oap2 --restart always -d -e SW_CLUSTER=zookeeper -e SW_CLUSTER_ZK_HOST_PORT=192.168.56.102:2181 -e SW_STORAGE=elasticsearch -e SW_STORAGE_ES_CLUSTER_NODES=192.168.56.102:9200 -p 12802:12800 -p 11802:11800 apache/skywalking-oap-server
+
+docker run --name oap3 --restart always -d -e SW_CLUSTER=zookeeper -e SW_CLUSTER_ZK_HOST_PORT=192.168.56.102:2181 -e SW_STORAGE=elasticsearch -e SW_STORAGE_ES_CLUSTER_NODES=192.168.56.102:9200 -p 12803:12800 -p 11803:11800 apache/skywalking-oap-server
+
+docker run --name oap-ui --restart always -d -e SW_OAP_ADDRESS=192.168.56.102:12801,192.168.56.102:12802,192.168.56.102:12803 -e TZ=Asia/Shanghai -p 9090:8080 apache/skywalking-ui
+```
+
+when storage use elasticsearch, you will set action.auto_create_index=true in elasticsearch.yml, cause skywalking will create index if not existed when application start.
+
+PS: skywalking 6.5 use elasticsearch 6.3.2 client, so it's not supported by es 7.x.
+
+
 ## javaagent
 
 ```
