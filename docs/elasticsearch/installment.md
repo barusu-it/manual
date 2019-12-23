@@ -71,6 +71,8 @@ reference
 
 https://github.com/docker-library/elasticsearch/issues/111
 
+https://www.elastic.co/guide/en/elasticsearch/reference/6.8/zip-targz.html
+
 
 ### the default discovery settings are unsuitable for production use; at least one of [discovery.seed_hosts, discovery.seed_providers, cluster.initial_master_nodes] must be configured
 

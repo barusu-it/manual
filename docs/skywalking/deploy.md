@@ -41,6 +41,9 @@ when storage use elasticsearch, you will set action.auto_create_index=true in el
 
 PS: skywalking 6.5 use elasticsearch 6.3.2 client, so it's not supported by es 7.x.
 
+reference
+
+https://hub.docker.com/r/apache/skywalking-oap-server
 
 ## javaagent
 
