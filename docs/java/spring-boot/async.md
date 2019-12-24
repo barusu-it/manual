@@ -2,6 +2,7 @@
 ### 使用说明
 
 https://www.baeldung.com/spring-async
+https://juejin.im/post/5b27b8366fb9a00e46675879
 
 ### 自定义 AsyncConfigurer 时，会报 'Bean 'asyncConfig' of type [it.barusu.tutorial.noteligible.AsyncConfig$$EnhancerBySpringCGLIB$$cd74405e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)'
 
