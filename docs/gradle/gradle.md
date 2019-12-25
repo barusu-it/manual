@@ -43,3 +43,11 @@ gradlew clean build -x test
 ```
 gradlew wrapper --gradle-version=$version
 ```
+
+### get system env
+
+```
+home = "$System.env.HOME"
+
+home = System.getenv('HOME')
+```
