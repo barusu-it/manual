@@ -49,7 +49,7 @@ https://hub.docker.com/r/apache/skywalking-oap-server
 
 ```
 java -javaagent:/path/to/agent/skywalking-agent.jar -Dskywalking.agent.service_name=$service_name \
--Dskywalking.collector.backend_service=$skywalking_server
+-Dskywalking.collector.backend_service=$skywalking_server -jar xxx.jar
 # $skywalking_server example: 192.168.56.102:11800
 ```
 
