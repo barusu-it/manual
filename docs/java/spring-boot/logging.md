@@ -12,3 +12,9 @@
 </appender>
 ```
 
+### 如何使用 spring base.xml 里的 LOG_FILE 和 LOG_PATH
+
+需要在 application.yml 文件中指定 logging.file 或 logging.path
+
+https://docs.spring.io/spring-boot/docs/1.3.1.RELEASE/reference/html/howto-logging.html#howto-configure-logback-for-logging
+
