@@ -7,7 +7,11 @@ use -D
 java -DVAR1=VAL1 -jar $JAR
 ```
 
+or use LoggerContextListener
+
 http://logback.qos.ch/manual/configuration.html#variableSubstitution
+
+https://oomake.com/question/399467
 
 ### gradle config
 
