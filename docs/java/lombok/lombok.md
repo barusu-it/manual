@@ -1,4 +1,14 @@
 
+### how to set variables to logback.xml
+
+use -D
+
+```
+java -DVAR1=VAL1 -jar $JAR
+```
+
+http://logback.qos.ch/manual/configuration.html#variableSubstitution
+
 ### gradle config
 
 ```groovy
