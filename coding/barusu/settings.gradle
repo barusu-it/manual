@@ -1,0 +1,3 @@
+rootProject.name = 'barusu'
+include 'barusu-commons'
+
