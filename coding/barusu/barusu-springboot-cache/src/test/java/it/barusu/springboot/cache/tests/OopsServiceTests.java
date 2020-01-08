@@ -8,12 +8,12 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.system.OutputCaptureRule;
 import org.springframework.test.context.junit4.SpringRunner;
 import redis.embedded.RedisServer;
 
+import javax.annotation.Resource;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
@@ -29,7 +29,7 @@ public class OopsServiceTests {
     @Rule
     public OutputCaptureRule outputCaptureRule = new OutputCaptureRule();
 
-    @Autowired
+    @Resource
     private OopsService oopsService;
 
     private RedisServer redisServer;
@@ -54,7 +54,6 @@ public class OopsServiceTests {
         String name = "jessie";
         String result = "oops! " + name;
 
-        // #1 first
         String oops = oopsService.oops(name);
         assertThat(oops, is(result));
         assertThat(outputCaptureRule.toString(), containsString("oops..."));
@@ -67,6 +66,27 @@ public class OopsServiceTests {
                 StandardCharsets.UTF_8), StandardCharsets.UTF_8);
         assertThat(outputs.get(outputs.size() - 1), not(containsString("oops...")));
 
+    }
 
+    /**
+     * cache penetration testcase
+     */
+    @Test
+    public void testOopsAndResultIsNull() throws IOException {
+        String name = "jessie";
+
+        String oops = oopsService.oopsAndResultIsNull(name);
+        assertThat(oops, nullValue());
+        assertThat(outputCaptureRule.toString(), containsString("oops and result is null..."));
+
+        log.info("append cut-off rule.");
+
+        String oopsAgain = oopsService.oopsAndResultIsNull(name);
+        assertThat(oopsAgain, nullValue());
+        List<String> outputs = IOUtils.readLines(IOUtils.toInputStream(outputCaptureRule.toString(),
+                StandardCharsets.UTF_8), StandardCharsets.UTF_8);
+        assertThat(outputs.get(outputs.size() - 1), not(containsString("oops and result is null...")));
+
+        // this testcase is passed by spring-boot 2.2.2, so spring-boot has resolved cache penetration (缓存穿透)
     }
 }

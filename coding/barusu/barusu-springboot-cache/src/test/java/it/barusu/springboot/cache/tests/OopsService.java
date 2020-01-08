@@ -13,4 +13,12 @@ public class OopsService {
         log.info("oops...");
         return "oops! " + name;
     }
+
+    @Cacheable(value = "cn.oopsAndResultIsNull", key = "#name")
+    public String oopsAndResultIsNull(String name) {
+        log.info("oops and result is null...");
+        return null;
+    }
+
+
 }
