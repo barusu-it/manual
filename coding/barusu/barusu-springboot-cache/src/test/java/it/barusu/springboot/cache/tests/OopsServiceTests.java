@@ -89,4 +89,9 @@ public class OopsServiceTests {
 
         // this testcase is passed by spring-boot 2.2.2, so spring-boot has resolved cache penetration (缓存穿透)
     }
+
+    // spring boot cache redis 默认使用 redis.ttl 统一的过期时间（不设置默认为不过期），如需要不同 ttl，则需要修改 RedisCache
+    // 而针对缓存击穿的场景，使用 spring boot cache 时，
+    // 建议使用扩展的二级缓存结合一级缓存永不失效（二级缓存可以减轻一级缓存的压力），低峰定期刷新缓存的解决方案，
+    // 不建议使用互斥锁的方式（考虑到性能和吞吐量问题）
 }
