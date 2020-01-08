@@ -1,0 +1,5 @@
+
+spring:
+  cache:
+    cache-names:
+      - cn.oops

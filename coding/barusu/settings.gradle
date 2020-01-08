@@ -1,3 +1,4 @@
 rootProject.name = 'barusu'
 include 'barusu-commons'
+include 'barusu-springboot-cache'
 
